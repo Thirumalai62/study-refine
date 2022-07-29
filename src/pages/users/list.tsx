@@ -1,31 +1,9 @@
-import {
-    BooleanField,
-    Breadcrumb,
-    DateField,
-    DeleteButton,
-    EditButton,
-    FilterDropdown,
-    Form,
-    getDefaultSortOrder,
-    Icons,
-    Input,
-    List,
-    Modal,
-    Radio,
-    Select,
-    ShowButton,
-    Space,
-    Table,
-    TextField,
-    useModalForm,
-    useSelect,
-    useTable,
-} from "@pankod/refine-antd";
-import { IResourceComponentsProps, useMany } from "@pankod/refine-core";
-import { ICategory, IPost } from "interfaces";
+import { Breadcrumb, getDefaultSortOrder, Icons, List, Table, TextField, useModalForm, useTable } from "@pankod/refine-antd";
+import { IResourceComponentsProps } from "@pankod/refine-core";
+import { IUsers } from "interfaces";
 
-export const PostList: React.FC<IResourceComponentsProps> = () => {
-    const { tableProps, sorter } = useTable<IPost>({
+export const UserList: React.FC<IResourceComponentsProps> = () => {
+    const { tableProps, sorter } = useTable<IUsers>({
         initialSorter: [
             {
                 field: "id",
@@ -33,42 +11,40 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
             },
         ],
     });
-
-    const categoryIds = tableProps?.dataSource?.map((item) => item.category.id) ?? [];
     // useMany => retrieving multiple items from a resource.
-    const { data: categoriesData, isLoading } = useMany<ICategory>({
-        resource: "categories",
-        ids: categoryIds,
-        queryOptions: {
-            enabled: categoryIds.length > 0,
-        },
-    });
+    // const { data: categoriesData, isLoading } = useMany<ICategory>({
+    //     resource: "categories",
+    //     ids: categoryIds,
+    //     queryOptions: {
+    //         enabled: categoryIds.length > 0,
+    //     },
+    // });
     // selecting the dropdown list it is similar to get the list
-    const { selectProps: categorySelectProps } = useSelect<ICategory>({
-        resource: "categories",
-        fetchSize: 10,
-        // filters
-        // filters: [
-        //     {
-        //         field: "title",
-        //         operator: "eq",
-        //         value: "Card",
-        //     },
-        // ],
-        // descending
-        // sort: [
-        //     {
-        //         field: "id",
-        //         order: "desc",
-        //     },
-        // ],
-    });
+    // const { selectProps: categorySelectProps } = useSelect<ICategory>({
+    //     resource: "categories",
+    //     fetchSize: 10,
+    //     // filters
+    //     // filters: [
+    //     //     {
+    //     //         field: "title",
+    //     //         operator: "eq",
+    //     //         value: "Card",
+    //     //     },
+    //     // ],
+    //     // descending
+    //     // sort: [
+    //     //     {
+    //     //         field: "id",
+    //     //         order: "desc",
+    //     //     },
+    //     // ],
+    // });
     // modal form
     const {
         modalProps: createModalProps,
         formProps: createFormProps,
         show: createShow,
-    } = useModalForm<IPost>({
+    } = useModalForm<IUsers>({
         action: "create",
     });
     const {
@@ -76,7 +52,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
         formProps: editFormProps,
         show: editShow,
         id: editId,
-    } = useModalForm<IPost>({
+    } = useModalForm<IUsers>({
         action: "edit",
     });
     const { CloseCircleOutlined, CheckCircleOutlined } = Icons;
@@ -106,36 +82,44 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                     sorter
                 />
                 <Table.Column
-                    dataIndex="title"
-                    key="title"
-                    title="Title"
+                    dataIndex="firstName"
+                    key="firstName"
+                    title="FirstName"
                     render={(value) => <TextField value={value} />}
-                    defaultSortOrder={getDefaultSortOrder("title", sorter)}
+                    defaultSortOrder={getDefaultSortOrder("firstName", sorter)}
                     sorter
                 />
                 <Table.Column
+                    dataIndex="lastName"
+                    key="lastName"
+                    title="LastName"
+                    render={(value) => <TextField value={value} />}
+                    defaultSortOrder={getDefaultSortOrder("lastName", sorter)}
+                    sorter
+                />
+                <Table.Column
+                    dataIndex="email"
+                    key="email"
+                    title="Email"
+                    render={(value) => <TextField value={value} />}
+                    defaultSortOrder={getDefaultSortOrder("email", sorter)}
+                    sorter
+                />
+                {/* <Table.Column
                     dataIndex="status"
                     key="status"
                     title="Status"
                     render={(value) => (
                         <BooleanField
-                            value={value === "published"}
+                            value={value === true}
                             trueIcon={<CheckCircleOutlined />}
                             falseIcon={<CloseCircleOutlined />}
-                            valueLabelTrue="published"
-                            valueLabelFalse="unpublished"
+                            valueLabelTrue={true}
+                            valueLabelFalse={false}
                         />
                     )}
-                />
-                <Table.Column
-                    dataIndex="createdAt"
-                    key="createdAt"
-                    title="Created At"
-                    render={(value) => <DateField value={value} format="LLL" />}
-                    defaultSortOrder={getDefaultSortOrder("createdAt", sorter)}
-                    sorter
-                />
-                <Table.Column
+                /> */}
+                {/* <Table.Column
                     dataIndex={["category", "id"]}
                     title="Category"
                     render={(value) => {
@@ -150,8 +134,8 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                             <Select style={{ minWidth: 200 }} mode="multiple" placeholder="Select Category" {...categorySelectProps} />
                         </FilterDropdown>
                     )}
-                />
-                <Table.Column<IPost>
+                /> */}
+                {/* <Table.Column<IUsers>
                     title="Actions"
                     dataIndex="actions"
                     render={(_, record) => (
@@ -166,9 +150,9 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                             <DeleteButton hideText size="small" recordItemId={record.id} />
                         </Space>
                     )}
-                />
+                /> */}
             </Table>
-            <Modal {...createModalProps}>
+            {/* <Modal {...createModalProps}>
                 <Form {...createFormProps} layout="vertical">
                     <Form.Item label="Title" name="title">
                         <Input />
@@ -181,8 +165,8 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                         </Radio.Group>
                     </Form.Item>
                 </Form>
-            </Modal>
-            <Modal {...editModalProps}>
+            </Modal> */}
+            {/* <Modal {...editModalProps}>
                 <Form {...editFormProps} layout="vertical">
                     <Form.Item label="Title" name="title">
                         <Input />
@@ -195,7 +179,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                         </Radio.Group>
                     </Form.Item>
                 </Form>
-            </Modal>
+            </Modal> */}
         </List>
     );
 };

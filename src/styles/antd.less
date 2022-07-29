@@ -1,0 +1,111 @@
+@import "~antd/lib/style/themes/default.less";
+@import "~antd/dist/antd.less";
+
+// base variables
+@border-radius-base: 5px;
+// colors
+@primary-color: #fc6964;
+@text-color: #303c4c; //rgb(52, 69, 99);
+
+@border-color-base: #d0d7e1; //#F4F2FF;
+@border-color-split: #d0d7e1;
+//@body-background:#F3F6FA;
+@layout-body-background: #ffffff; //#F3F6FA; //#F3F6FA;
+@background-color-light: #f8f8fb; //#F3F6FA ; //hsv(0, 0, 98%); // background of header and selected item
+@background-color-base: #f9fafc; //hsv(0, 0, 96%); // Default grey background color
+@page-header-padding: 0px;
+
+// Layout light theme
+@layout-sider-background: #f8f8fb; //#F3F6FA;
+@layout-trigger-background: #f2f4f6;
+@layout-trigger-color: @text-color;
+
+@menu-inline-toplevel-item-height: 40px;
+@menu-item-height: 30px;
+@menu-item-group-height: @line-height-base;
+@menu-collapsed-width: 80px;
+@menu-bg: @layout-sider-background;
+@menu-popup-bg: @layout-sider-background;
+@menu-item-color: @text-color;
+@menu-inline-submenu-bg: #f9fafc;
+@menu-highlight-color: @primary-color;
+@menu-highlight-danger-color: @error-color;
+@menu-item-active-bg: none;
+@menu-item-active-danger-bg: @red-1;
+@menu-item-active-border-width: 3px;
+@menu-item-group-title-color: @text-color-secondary;
+@menu-item-vertical-margin: 4px;
+@menu-item-font-size: @font-size-base;
+@menu-item-boundary-margin: 8px;
+@menu-item-padding-horizontal: 20px;
+@menu-item-padding: 0 @menu-item-padding-horizontal;
+@menu-horizontal-line-height: 46px;
+@menu-icon-margin-right: 10px;
+@menu-icon-size: @menu-item-font-size;
+@menu-icon-size-lg: @font-size-lg;
+@menu-item-group-title-font-size: @menu-item-font-size;
+
+// Table
+// --
+@table-bg: @component-background;
+@table-header-bg: @background-color-light;
+@table-header-color: @heading-color;
+@table-header-sort-bg: @background-color-base;
+@table-body-sort-bg: @background-color-base;
+@table-row-hover-bg: @background-color-light;
+@table-selected-row-color: inherit;
+@table-selected-row-bg: @primary-1;
+@table-body-selected-sort-bg: @table-selected-row-bg;
+@table-selected-row-hover-bg: darken(@table-selected-row-bg, 2%);
+@table-expanded-row-bg: #fbfbfb;
+@table-padding-vertical: 16px;
+@table-padding-horizontal: 16px;
+@table-padding-vertical-md: (@table-padding-vertical * 3 / 4);
+@table-padding-horizontal-md: (@table-padding-horizontal / 2);
+@table-padding-vertical-sm: (@table-padding-vertical / 2);
+@table-padding-horizontal-sm: (@table-padding-horizontal / 2);
+@table-border-color: @border-color-split;
+@table-border-radius-base: @border-radius-base;
+@table-footer-bg: @background-color-light;
+@table-footer-color: @heading-color;
+@table-header-bg-sm: @table-header-bg;
+@table-font-size: @font-size-base;
+@table-font-size-md: @table-font-size;
+@table-font-size-sm: @table-font-size;
+@table-header-cell-split-color: rgba(0, 0, 0, 0.06);
+// Sorter
+// Legacy: `table-header-sort-active-bg` is used for hover not real active
+@table-header-sort-active-bg: rgba(0, 0, 0, 0.04);
+@table-fixed-header-sort-active-bg: hsv(0, 0, 96%);
+
+//Modal
+@modal-header-bg: @background-color-light;
+@modal-content-bg: @background-color-light;
+@modal-footer-bg: @background-color-light;
+
+//Form
+@form-vertical-label-padding: 0 0 0px;
+@form-item-margin-bottom: 5px;
+
+// Filter
+@table-header-filter-active-bg: rgba(0, 0, 0, 0.04);
+@table-filter-btns-bg: inherit;
+@table-filter-dropdown-bg: @component-background;
+@table-expand-icon-bg: @component-background;
+@table-selection-column-width: 32px;
+// Sticky
+@table-sticky-scroll-bar-bg: fade(#000, 35%);
+@table-sticky-scroll-bar-radius: 4px;
+
+.ant-layout-sider {
+    border-right: 1px solid @border-color-base;
+}
+.ant-menu-inline,
+.ant-menu-vertical,
+.ant-menu-vertical-left {
+    border-right: none;
+}
+
+//.ant-page-header-heading{
+//   padding: 0px 20px;
+//}

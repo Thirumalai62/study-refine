@@ -1,0 +1,10 @@
+.save-draft-btn{
+    background-color: #d5195e !important;
+    color: white !important;
+}
+.hide{
+    display: none !important;
+}
+.show{
+    display: block !important;
+}
